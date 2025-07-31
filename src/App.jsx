@@ -3,9 +3,9 @@ import { ethers } from "ethers";
 import "./index.css";
 import logo from "./assets/dice.svg";
 
-const CONTRACT_ADDRESS = "0x86698F5b6a66783b86Afa91F7f96070ce65D9c51";
+const CONTRACT_ADDRESS = "0x2A271145ca0a9D1A381726830B03616E3F7fe047";
 const ABI = [
-  "function placeBet(uint8 _choice) public payable",
+  "function createMatch(uint8 _choice) public payable",
   "function getMyStats() public view returns (uint256 wins, uint256 losses)"
 ];
 
@@ -16,7 +16,7 @@ function App() {
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
   const [choice, setChoice] = useState(null);
-  const [amountType, setAmountType] = useState(null); // 0 = 0.05, 1 = 0.1
+  const [amountType, setAmountType] = useState(null);
   const [error, setError] = useState("");
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
@@ -80,17 +80,23 @@ function App() {
       return;
     }
     setError("");
+
     const amount = amountType === 0 ? "0.05" : "0.1";
+
     try {
-      const tx = await contract.placeBet(choice, {
-        value: ethers.parseEther(amount)
+      const tx = await contract.createMatch(choice, {
+        value: ethers.parseEther(amount.toString())
       });
       await tx.wait();
       await refreshBalance();
       await fetchStats();
     } catch (err) {
-      console.error(err);
-      setError("Bet failed");
+      console.error("Bet error:", err);
+      if (err.reason) {
+        setError(err.reason);
+      } else {
+        setError("Bet failed");
+      }
     }
   };
 
