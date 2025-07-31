@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1b2e;
+  color: white;
+  text-align: center;
+}
+
+.app {
+  padding: 30px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #a07cff;
+}
+
+.connect-btn,
+.disconnect-btn,
+.bet-button,
+.refresh-btn {
+  padding: 12px 24px;
+  margin: 8px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.connect-btn {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.connect-btn:hover {
+  background-color: #5a32a3;
+}
+
+.disconnect-btn {
+  background-color: #ff4b5c;
+  color: white;
+}
+
+.disconnect-btn:hover {
+  background-color: #d73a4a;
+}
+
+.refresh-btn {
+  background-color: #0096c7;
+  color: white;
+}
+
+.refresh-btn:hover {
+  background-color: #0077a3;
+}
+
+.bet-box {
+  margin-top: 30px;
+}
+
+.bet-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.bet-button {
+  background-color: #282c34;
+  color: white;
+  border: 2px solid #6f42c1;
+}
+
+.bet-button:hover {
+  background-color: #3d4151;
+}
+
+.bet-button.selected {
+  background-color: #45cc3a;
+  color: white;
+}
+
+.wallet-info {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 15px;
+}
+
+.stats {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #f7c948;
+}
+
+/* Mobile responsive tweaks */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .connect-btn,
+  .disconnect-btn,
+  .bet-button,
+  .refresh-btn {
+    width: 80%;
+  }
+}
